@@ -45,6 +45,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 // CHANGES AND IMPROVEMENTS DESCRIBED BELOW:
 //////////////////////////////////////////////////////////////////////////////////
+//	*	Fixed minor bug in PatternMaker "Save pattern" function, ".itx" was not 
+//		added to file.
+//  J.Sj. 2021-12-20
+//////////////////////////////////////////////////////////////////////////////////
 //	*	Fixed minor bug in WaveCreator "Save" function, ".itx" was not added.
 //	*	Progress bar frame removed.
 //  J.Sj. 2021-12-19
@@ -3420,7 +3424,7 @@ Macro SavePatternProc(ctrlName) : ButtonControl
 		
 	RemoveInfoBox(Handle)
 	
-	save/O/T/I/P=Patterns W_OutputCheck,W_OutputWaveNames,W_InputCheck,W_NRepeats,W_ISI,W_NSteps,W_PatternName as root:MP:PM_Data:PatternName
+	save/O/T/I/P=Patterns W_OutputCheck,W_OutputWaveNames,W_InputCheck,W_NRepeats,W_ISI,W_NSteps,W_PatternName as root:MP:PM_Data:PatternName+".itx"
 
 	print "Saving pattern \""+root:MP:PM_Data:PatternName+"\" at "+time()
 
