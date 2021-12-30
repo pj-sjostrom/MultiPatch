@@ -45,6 +45,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 // CHANGES AND IMPROVEMENTS DESCRIBED BELOW:
 //////////////////////////////////////////////////////////////////////////////////
+//	*	Fixed minor bug in WaveCreator "Save" function, ".itx" was not added.
+//	*	Progress bar frame removed.
+//  J.Sj. 2021-12-19
+//////////////////////////////////////////////////////////////////////////////////
 //	*	Fixed button color bug associated with Igor 9.
 //	*	Added support for the Warner Inline Heater TC-324C. To use this feature,
 //		need to also load and init the Warner Panel (WarnerPanel.ipf).
@@ -3170,7 +3174,7 @@ Macro SaveWaveDescriptorProc(ctrlName) : ButtonControl
 	Make/O/T/N=(1) W_WaveDescriptorName							// Create a text wave, coz strings cannot be saved
 	W_WaveDescriptorName[0] = root:MP:CurrWaveDescriptor
 
-	Save/O/T/I/P=WaveDescriptors W_Params,W_PulseAmp,W_NPulses,W_PulseDur,W_PulseFreq,W_PulseDispl,W_BiphasicFlag,W_AddSlot,W_SynapseSlot,W_UseSlot,W_RampSlot,W_WaveDescriptorName as root:MP:CurrWaveDescriptor
+	Save/O/T/I/P=WaveDescriptors W_Params,W_PulseAmp,W_NPulses,W_PulseDur,W_PulseFreq,W_PulseDispl,W_BiphasicFlag,W_AddSlot,W_SynapseSlot,W_UseSlot,W_RampSlot,W_WaveDescriptorName as root:MP:CurrWaveDescriptor+".itx"
 
 	print "Saving wave descriptor \""+root:MP:CurrWaveDescriptor+"\" at "+time()
 
@@ -3666,7 +3670,7 @@ Function MakeProgressBar()
 	ModifyPanel cbRGB=(65534,65534,65534)
 
 	ValDisplay theBar,pos={4,4+rowHeight*0},size={Width-4-4,rowHeight-4},title="Progress: "
-	ValDisplay theBar,labelBack=(65535,65535,65535),fSize=12,frame=2
+	ValDisplay theBar,labelBack=(65535,65535,65535),fSize=12,frame=0
 	ValDisplay theBar,limits={0,1,0},barmisc={0,0},mode= 3,value=#"root:MP:Progress_val"
 
 	SetVariable theText,pos={4,4+rowHeight*1},size={Width-4-4,rowHeight-4},title=" "
