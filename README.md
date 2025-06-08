@@ -13,3 +13,17 @@ The NI board you use has to have four inputs and four outputs. Other than that, 
 If do not have the NIDAQ Tools MX XOP installed, the software will run in demo mode.
 
 There is currently no manual for this software.
+
+# Update 7 June 2025: Procedure files used for data analysis were added
+
+- MP_DatAn 20.ipf
+- MP_DatAn 20.ipn
+- MP_CompileExperiments v28.ipf
+
+MP_DatAn (MultiPatch Data Analysis) is used to analyze individual ephys experiments, e.g., a paired recording of long-term potentiation or depression. The corresponding ipn file provides help for setting up the analysis. Once analysis is done, the data should be exported to a folder named according to the condition at hand, e.g., "LTP" or "control".
+
+Once all individual experiments have been exported with MP_DatAn into the relevant folders, MP_CompileExperiments is used for cross-condition meta analysis. The user indicates to the software where the relevant folders are located (e.g., "LTP" and "control") using the Compile button, top right. For each condition, use Macros > Store condition to save. Once all conditions have been loaded, use Macros > Reanalyze all slots. 
+
+The PDF files 'MP_DatAn_20_loadTraces_V01.pdf' and 'MP_DatAn_20_StdpAnalysis_V02.pdf' provide guidance for how to load files and how to analyze an STDP experiment, respectively, with MP_DatAn.
+
+There is currently no manual for the MP_CompileExperiments software.
